@@ -5,3 +5,4 @@ datetime
 matplotlib
 seaborn
 fbprophet
+plotly

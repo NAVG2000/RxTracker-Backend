@@ -8,6 +8,7 @@ from drugClass import drugObj
 
 app = Flask(__name__)
 
+drugobj = None
 availableGraphs = {
     "graph_normalizedTRxAndAllMAs": {'function': drugobj.graph_normalizedTRxAndAllMAs, 'figName': drugobj.normalizedTRxAndAllMAsChart},
     "graph_normalizedTRx": {'function': drugobj.graph_normalizedTRx, 'figName': drugobj.normalizedTRxChart},
