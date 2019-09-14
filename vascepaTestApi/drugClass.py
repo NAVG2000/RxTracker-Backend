@@ -27,6 +27,7 @@ class drugObj:
         self.rx_quantity = self.importerObj.rx_quantity
         self.rawFields = self.importerObj.rawFields
         self.updatedFields = self.importerObj.updatedFields
+        self.availableGraphs =  self.generateAvailableGraphsDict
         
         #generation of charts (eventaully make functions that generates predecided charts (such as a 'createReport' function))
         #self.generateAllCharts(self.predict)
@@ -34,6 +35,40 @@ class drugObj:
     def __repr__(self):
         return f"Drug Name: {self.drug}, Rx Quantity: {self.rx_quantity}, Fields: \n Updated Fields: {self.updatedFields} \n Raw Fields: {self.rawFields} \n ImporterObj: {self.importerObj} \n MasterDf: \n {self.masterDf}"
     
+    def generateAvailableGraphsDict(self):
+        availableGraphs = {
+            "graph_normalizedTRxAndAllMAs": {'function': graph_normalizedTRxAndAllMAs, 'figName': normalizedTRxAndAllMAsChart},
+            "graph_normalizedTRx": {'function': graph_normalizedTRx, 'figName': normalizedTRxChart},
+            "graph_fourWeekMATRx": {'function': graph_fourWeekMATRx, 'figName': fourWeekMATRxChart},
+            "graph_eightWeekMATRx": {'function': graph_eightWeekMATRx, 'figName': eightWeekMATRxChart},
+            "graph_thirteenWeekMATRx": {'function': graph_thirteenWeekMATRx, 'figName': thirteenWeekMATRxChart},
+            "graph_normalizedTRxLog": {'function': graph_normalizedTRxLog, 'figName': normalizedTRxLogChart},
+            "graph_normalizedNRx": {'function': graph_normalizedNRx, 'figName': normalizedNRxChart},
+            "graph_fourWeekMANRx": {'function': graph_fourWeekMANRx, 'figName': fourWeekMANRxChart},
+            "graph_eightWeekMANRx": {'function': graph_eightWeekMANRx, 'figName': eightWeekMANRxChart},
+            "graph_thirteenWeekMANRx": {'function': graph_thirteenWeekMANRx, 'figName': thirteenWeekMANRxChart},
+            "graph_normalizedNRxLog": {'function': graph_normalizedNRxLog, 'figName': normalizedNRxLogChart},
+            "graph_normalizedRRx": {'function': graph_normalizedRRx, 'figName': normalizedRRxChart},
+            "graph_fourWeekMARRx": {'function': graph_fourWeekMARRx, 'figName': fourWeekMARRxChart},
+            "graph_eightWeekMARRx": {'function': graph_eightWeekMARRx, 'figName': eightWeekMARRxChart},
+            "graph_thirteenWeekMARRx": {'function': graph_thirteenWeekMARRx, 'figName': thirteenWeekMARRxChart},
+            "graph_normalizedRRxLog": {'function': graph_normalizedRRxLog, 'figName': normalizedRRxLogChart},
+            "graph_trxWowGrowth": {'function': graph_trxWowGrowth, 'figName': trxWowGrowthChart},
+            "graph_fourWeekMATRxWoWGrowth": {'function': graph_fourWeekMATRxWoWGrowth, 'figName': fourWeekMATRxWoWGrowthChart},
+            "graph_eightWeekMATRxWoWGrowth": {'function': graph_eightWeekMATRxWoWGrowth, 'figName': eightWeekMATRxWoWGrowthChart},
+            "graph_thirteenWeekMATRxWoWGrowth": {'function': graph_thirteenWeekMATRxWoWGrowth, 'figName': thirteenWeekMATRxWoWGrowthChart},
+            "graph_nrxWowGrowth": {'function': graph_nrxWowGrowth, 'figName': nrxWowGrowthChart},
+            "graph_fourWeekMANRxWoWGrowth": {'function': graph_fourWeekMANRxWoWGrowth, 'figName': fourWeekMANRxWoWGrowthChart},
+            "graph_eightWeekMANRxWoWGrowth": {'function': graph_eightWeekMANRxWoWGrowth, 'figName': eightWeekMANRxWoWGrowthChart},
+            "graph_thirteenWeekMANRxWoWGrowth": {'function': graph_thirteenWeekMANRxWoWGrowth, 'figName': thirteenWeekMANRxWoWGrowthChart},
+            "graph_rrxWowGrowth": {'function': graph_rrxWowGrowth, 'figName': rrxWowGrowthChart},
+            "graph_fourWeekMARRxWoWGrowth": {'function': graph_fourWeekMARRxWoWGrowth, 'figName': fourWeekMARRxWoWGrowthChart},
+            "graph_eightWeekMARRxWoWGrowth": {'function': graph_eightWeekMARRxWoWGrowth, 'figName': eightWeekMARRxWoWGrowthChart},
+            "graph_thirteenWeekMARRxWoWGrowth": {'function': graph_thirteenWeekMARRxWoWGrowth, 'figName': thirteenWeekMARRxWoWGrowthChart},
+            "graphNormalizedAllRx": {'function': graphNormalizedAllRx, 'figName': normalizedAllRxChart}
+        }
+        return availableGraphs
+
     def generateAllCharts(self):
         self.graph_normalizedTRxAndAllMAs(self.weeks, self.predict)
         self.graph_normalizedTRx(self.weeks, self.predict)
