@@ -27,7 +27,7 @@ class drugObj:
         self.rx_quantity = self.importerObj.rx_quantity
         self.rawFields = self.importerObj.rawFields
         self.updatedFields = self.importerObj.updatedFields
-        self.availableGraphs =  self.generateAvailableGraphsDict
+        self.availableGraphs =  self.generateAvailableGraphsDict()
         
         #generation of charts (eventaully make functions that generates predecided charts (such as a 'createReport' function))
         #self.generateAllCharts(self.predict)
