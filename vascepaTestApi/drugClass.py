@@ -36,6 +36,37 @@ class drugObj:
         return f"Drug Name: {self.drug}, Rx Quantity: {self.rx_quantity}, Fields: \n Updated Fields: {self.updatedFields} \n Raw Fields: {self.rawFields} \n ImporterObj: {self.importerObj} \n MasterDf: \n {self.masterDf}"
     
     def generateAvailableGraphsDict(self):
+        self.normalizedTRxAndAllMAsChart = None
+        self.normalizedTRxChart = None
+        self.fourWeekMATRxChart = None
+        self.eightWeekMATRxChart = None
+        self.thirteenWeekMATRxChart = None
+        self.normalizedTRxLogChart = None
+        self.normalizedNRxChart = None
+        self.normalizedNRxChart = None
+        self.fourWeekMANRxChart = None
+        self.eightWeekMANRxChart = None
+        self.thirteenWeekMANRxChart = None
+        self.normalizedNRxLogChart = None
+        self.normalizedRRxChart = None
+        self.fourWeekMARRxChart = None
+        self.eightWeekMARRxChart = None
+        self.thirteenWeekMARRxChart = None
+        self.normalizedRRxLogChart = None
+        self.trxWowGrowthChart = None
+        self.fourWeekMATRxWoWGrowthChart = None
+        self.eightWeekMATRxWoWGrowthChart = None
+        self.thirteenWeekMATRxWoWGrowthChart = None
+        self.nrxWowGrowthChart = None
+        self.fourWeekMANRxWoWGrowthChart = None
+        self.eightWeekMANRxWoWGrowthChart = None
+        self.thirteenWeekMANRxWoWGrowthChart = None
+        self.rrxWowGrowthChart = None
+        self.fourWeekMARRxWoWGrowthChart = None
+        self.eightWeekMARRxWoWGrowthChart = None
+        self.thirteenWeekMARRxWoWGrowthChart = None
+        self.normalizedAllRxChart = None
+
         availableGraphs = {
             "graph_normalizedTRxAndAllMAs": {'function': self.graph_normalizedTRxAndAllMAs, 'figName': self.normalizedTRxAndAllMAsChart},
             "graph_normalizedTRx": {'function': self.graph_normalizedTRx, 'figName': self.normalizedTRxChart},

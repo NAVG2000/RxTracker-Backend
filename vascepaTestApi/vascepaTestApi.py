@@ -16,7 +16,7 @@ def test():
 
 
 @app.route('/chart', methods=['POST'])
-def testChart():
+def chart():
     if request.headers['Content-Type'] == 'application/json':
         drug = request.get_json()['drug']
         chartType = request.get_json()['chartType']
