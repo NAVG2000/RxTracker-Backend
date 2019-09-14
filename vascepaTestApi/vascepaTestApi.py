@@ -9,7 +9,7 @@ from drugClass import drugObj
 app = Flask(__name__)
 
 
-def generateAvailableGraphsDict():
+def generateAvailableGraphsDict(drugobj):
     availableGraphs = {
         "graph_normalizedTRxAndAllMAs": {'function': drugobj.graph_normalizedTRxAndAllMAs, 'figName': drugobj.normalizedTRxAndAllMAsChart},
         "graph_normalizedTRx": {'function': drugobj.graph_normalizedTRx, 'figName': drugobj.normalizedTRxChart},
@@ -59,7 +59,7 @@ def testChart():
         predictBool = request.get_json()['predictBool']
         source = request.get_json()['source']
         drugobj = drugObj(drug, weeks, source, predictBool)
-        availableGraphs = generateAvailableGraphsDict()
+        availableGraphs = generateAvailableGraphsDict(drugobj)
         availableGraphs[chartType]['function'](weeks, predictBool)
         fig = availableGraphs[chartType]['figName'].fig
         img = BytesIO()
