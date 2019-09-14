@@ -271,115 +271,115 @@ class drugObj:
             self.normalizedRRxLogChart.generateChart(["logy_plot"],predictionDf["Week"],[predictionDf["Normalized_RRx"]])
     
     def graph_fourWeekMATRx(self,weeks, predict):
-        self.fourWeekMATRx = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_TRx"],["scatter"])
+        self.fourWeekMATRxChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_TRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Four_Week_MA_TRx",52).predictionDf
-            self.fourWeekMATRx.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Four_Week_MA_TRx"]])
+            self.fourWeekMATRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Four_Week_MA_TRx"]])
         
     def graph_fourWeekMANRx(self,weeks, predict):
-        self.fourWeekMANRx = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_NRx"],["scatter"])
+        self.fourWeekMANRxChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_NRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Four_Week_MA_NRx",52).predictionDf
-            self.fourWeekMANRx.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Four_Week_MA_NRx"]])
+            self.fourWeekMANRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Four_Week_MA_NRx"]])
         
     def graph_fourWeekMARRx(self,weeks, predict):
-        self.fourWeekMARRx = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_RRx"],["scatter"])
+        self.fourWeekMARRxChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_RRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Four_Week_MA_RRx",52).predictionDf
-            self.fourWeekMARRx.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Four_Week_MA_RRx"]])
+            self.fourWeekMARRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Four_Week_MA_RRx"]])
         
     def graph_eightWeekMATRx(self,weeks, predict):
-        self.eightWeekMATRx = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_TRx"],["scatter"])
+        self.eightWeekMATRxChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_TRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Eight_Week_MA_TRx",52).predictionDf
-            self.eightWeekMATRx.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Eight_Week_MA_TRx"]])
+            self.eightWeekMATRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Eight_Week_MA_TRx"]])
         
     def graph_eightWeekMANRx(self,weeks, predict):
-        self.eightWeekMANRx = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_NRx"],["scatter"])
+        self.eightWeekMANRxChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_NRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Eight_Week_MA_NRx",52).predictionDf
-            self.eightWeekMANRx.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Eight_Week_MA_NRx"]])
+            self.eightWeekMANRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Eight_Week_MA_NRx"]])
         
     def graph_eightWeekMARRx(self,weeks, predict):
-        self.eightWeekMARRx = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_RRx"],["scatter"])
+        self.eightWeekMARRxChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_RRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Eight_Week_MA_RRx",52).predictionDf
-            self.eightWeekMARRx.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Eight_Week_MA_RRx"]])
+            self.eightWeekMARRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Eight_Week_MA_RRx"]])
         
     def graph_thirteenWeekMATRx(self,weeks, predict):
-        self.thirteenWeekMATRx = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_TRx"],["scatter"])
+        self.thirteenWeekMATRxChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_TRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Thirteen_Week_MA_TRx",52).predictionDf
-            self.thirteenWeekMATRx.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_TRx"]])
+            self.thirteenWeekMATRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_TRx"]])
         
     def graph_thirteenWeekMANRx(self,weeks, predict):
-        self.thirteenWeekMANRx = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_NRx"],["scatter"])
+        self.thirteenWeekMANRxChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_NRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Thirteen_Week_MA_NRx",52).predictionDf
-            self.thirteenWeekMANRx.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_NRx"]])
+            self.thirteenWeekMANRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_NRx"]])
         
     def graph_thirteenWeekMARRx(self,weeks, predict):
-        self.thirteenWeekMARRx = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_RRx"],["scatter"])
+        self.thirteenWeekMARRxChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_RRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Thirteen_Week_MA_RRx",52).predictionDf
-            self.thirteenWeekMARRx.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_RRx"]])
+            self.thirteenWeekMARRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_RRx"]])
         
     def graph_normalizedTRxAndAllMAs(self,weeks, predict):
-        self.normalizedTRxAndAllMAs = graphObj(self.drug,self.masterDf, weeks,"Week",["Normalized_TRx","Four_Week_MA_TRx","Eight_Week_MA_TRx","Thirteen_Week_MA_TRx"],["scatter","plot","plot","plot"], yLabel="Vascepa TRx and All Moving Averages")
+        self.normalizedTRxAndAllMAsChart = graphObj(self.drug,self.masterDf, weeks,"Week",["Normalized_TRx","Four_Week_MA_TRx","Eight_Week_MA_TRx","Thirteen_Week_MA_TRx"],["scatter","plot","plot","plot"], yLabel="Vascepa TRx and All Moving Averages")
         #implement prediction
     
     #new:
     def graph_fourWeekMATRxWoWGrowth(self,weeks, predict):
-        self.fourWeekMATRxWoWGrowth = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_TRx_WoW_Growth"],["plot"])
+        self.fourWeekMATRxWoWGrowthChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_TRx_WoW_Growth"],["plot"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Four_Week_MA_TRx_WoW_Growth",52).predictionDf
-            self.fourWeekMATRxWoWGrowth.generateChart(["plot"],predictionDf["Week"],[predictionDf["Four_Week_MA_TRx_WoW_Growth"]])
+            self.fourWeekMATRxWoWGrowthChart.generateChart(["plot"],predictionDf["Week"],[predictionDf["Four_Week_MA_TRx_WoW_Growth"]])
     
     def graph_fourWeekMANRxWoWGrowth(self,weeks, predict):
-        self.fourWeekMANRxWoWGrowth = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_NRx_WoW_Growth"],["plot"])
+        self.fourWeekMANRxWoWGrowthChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_NRx_WoW_Growth"],["plot"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Four_Week_MA_NRx_WoW_Growth",52).predictionDf
-            self.fourWeekMANRxWoWGrowth.generateChart(["plot"],predictionDf["Week"],[predictionDf["Four_Week_MA_NRx_WoW_Growth"]])
+            self.fourWeekMANRxWoWGrowthChart.generateChart(["plot"],predictionDf["Week"],[predictionDf["Four_Week_MA_NRx_WoW_Growth"]])
     
     def graph_fourWeekMARRxWoWGrowth(self,weeks, predict):
-        self.fourWeekMARRxWoWGrowth = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_RRx_WoW_Growth"],["plot"])
+        self.fourWeekMARRxWoWGrowthChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Four_Week_MA_RRx_WoW_Growth"],["plot"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Four_Week_MA_RRx_WoW_Growth",52).predictionDf
-            self.fourWeekMARRxWoWGrowth.generateChart(["plot"],predictionDf["Week"],[predictionDf["Four_Week_MA_RRx_WoW_Growth"]])
+            self.fourWeekMARRxWoWGrowthChart.generateChart(["plot"],predictionDf["Week"],[predictionDf["Four_Week_MA_RRx_WoW_Growth"]])
     
     def graph_eightWeekMATRxWoWGrowth(self,weeks, predict):
-        self.eightWeekMATRxWoWGrowth = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_TRx_WoW_Growth"],["plot"])
+        self.eightWeekMATRxWoWGrowthChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_TRx_WoW_Growth"],["plot"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Eight_Week_MA_TRx_WoW_Growth",52).predictionDf
-            self.eightWeekMATRxWoWGrowth.generateChart(["plot"],predictionDf["Week"],[predictionDf["Eight_Week_MA_TRx_WoW_Growth"]])
+            self.eightWeekMATRxWoWGrowthChart.generateChart(["plot"],predictionDf["Week"],[predictionDf["Eight_Week_MA_TRx_WoW_Growth"]])
         
     def graph_eightWeekMANRxWoWGrowth(self,weeks, predict):
-        self.eightWeekMANRxWoWGrowth = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_NRx_WoW_Growth"],["plot"])
+        self.eightWeekMANRxWoWGrowthChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_NRx_WoW_Growth"],["plot"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Eight_Week_MA_NRx_WoW_Growth",52).predictionDf
-            self.eightWeekMANRxWoWGrowth.generateChart(["plot"],predictionDf["Week"],[predictionDf["Eight_Week_MA_NRx_WoW_Growth"]])
+            self.eightWeekMANRxWoWGrowthChart.generateChart(["plot"],predictionDf["Week"],[predictionDf["Eight_Week_MA_NRx_WoW_Growth"]])
         
     def graph_eightWeekMARRxWoWGrowth(self,weeks, predict):
-        self.eightWeekMARRxWoWGrowth = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_RRx_WoW_Growth"],["plot"])
+        self.eightWeekMARRxWoWGrowthChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Eight_Week_MA_RRx_WoW_Growth"],["plot"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Eight_Week_MA_RRx_WoW_Growth",52).predictionDf
-            self.eightWeekMARRxWoWGrowth.generateChart(["plot"],predictionDf["Week"],[predictionDf["Eight_Week_MA_RRx_WoW_Growth"]])
+            self.eightWeekMARRxWoWGrowthChart.generateChart(["plot"],predictionDf["Week"],[predictionDf["Eight_Week_MA_RRx_WoW_Growth"]])
         
     def graph_thirteenWeekMATRxWoWGrowth(self,weeks, predict):
-        self.thirteenWeekMATRxWoWGrowth = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_TRx_WoW_Growth"],["plot"])
+        self.thirteenWeekMATRxWoWGrowthChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_TRx_WoW_Growth"],["plot"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Thirteen_Week_MA_TRx_WoW_Growth",52).predictionDf
-            self.thirteenWeekMATRxWoWGrowth.generateChart(["plot"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_TRx_WoW_Growth"]])
+            self.thirteenWeekMATRxWoWGrowthChart.generateChart(["plot"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_TRx_WoW_Growth"]])
         
     def graph_thirteenWeekMANRxWoWGrowth(self,weeks, predict):
-        self.thirteenWeekMANRxWoWGrowth = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_NRx_WoW_Growth"],["plot"])
+        self.thirteenWeekMANRxWoWGrowthChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_NRx_WoW_Growth"],["plot"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Thirteen_Week_MA_NRx_WoW_Growth",52).predictionDf
-            self.thirteenWeekMANRxWoWGrowth.generateChart(["plot"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_NRx_WoW_Growth"]])
+            self.thirteenWeekMANRxWoWGrowthChart.generateChart(["plot"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_NRx_WoW_Growth"]])
         
     def graph_thirteenWeekMARRxWoWGrowth(self,weeks, predict):
-        self.thirteenWeekMARRxWoWGrowth = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_RRx_WoW_Growth"],["plot"])
+        self.thirteenWeekMARRxWoWGrowthChart = graphObj(self.drug,self.masterDf,weeks,"Week",["Thirteen_Week_MA_RRx_WoW_Growth"],["plot"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Thirteen_Week_MA_RRx_WoW_Growth",52).predictionDf
-            self.thirteenWeekMARRxWoWGrowth.generateChart(["plot"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_RRx_WoW_Growth"]])
+            self.thirteenWeekMARRxWoWGrowthChart.generateChart(["plot"],predictionDf["Week"],[predictionDf["Thirteen_Week_MA_RRx_WoW_Growth"]])
     
