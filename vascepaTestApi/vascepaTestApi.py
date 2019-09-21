@@ -24,8 +24,10 @@ def chart():
         predictBool = request.get_json()['predictBool']
         source = request.get_json()['source']
         drugobj = drugObj(drug, weeks, source, predictBool)
-        drugobj.availableGraphs[chartType]['function'](weeks, predictBool)
-        fig = drugobj.availableGraphs[chartType]['figName'].fig
+        availableGraphs = drugobj.generateAvailableGraphsDict()
+        availableGraphs[chartType]['function'](weeks, predictBool)
+        availableGraphs = drugobj.generateAvailableGraphsDict()
+        fig = availableGraphs[chartType]['figName'].fig
         img = BytesIO()
         fig.savefig(img)
         img.seek(0)

@@ -27,15 +27,7 @@ class drugObj:
         self.rx_quantity = self.importerObj.rx_quantity
         self.rawFields = self.importerObj.rawFields
         self.updatedFields = self.importerObj.updatedFields
-        self.availableGraphs =  self.generateAvailableGraphsDict()
-        
-        #generation of charts (eventaully make functions that generates predecided charts (such as a 'createReport' function))
-        #self.generateAllCharts(self.predict)
-        
-    def __repr__(self):
-        return f"Drug Name: {self.drug}, Rx Quantity: {self.rx_quantity}, Fields: \n Updated Fields: {self.updatedFields} \n Raw Fields: {self.rawFields} \n ImporterObj: {self.importerObj} \n MasterDf: \n {self.masterDf}"
-    
-    def generateAvailableGraphsDict(self):
+        # Charts: 
         self.normalizedTRxAndAllMAsChart = None
         self.normalizedTRxChart = None
         self.fourWeekMATRxChart = None
@@ -66,7 +58,14 @@ class drugObj:
         self.eightWeekMARRxWoWGrowthChart = None
         self.thirteenWeekMARRxWoWGrowthChart = None
         self.normalizedAllRxChart = None
-
+        
+        #generation of charts (eventaully make functions that generates predecided charts (such as a 'createReport' function))
+        #self.generateAllCharts(self.predict)
+        
+    def __repr__(self):
+        return f"Drug Name: {self.drug}, Rx Quantity: {self.rx_quantity}, Fields: \n Updated Fields: {self.updatedFields} \n Raw Fields: {self.rawFields} \n ImporterObj: {self.importerObj} \n MasterDf: \n {self.masterDf}"
+    
+    def generateAvailableGraphsDict(self):
         availableGraphs = {
             "graph_normalizedTRxAndAllMAs": {'function': self.graph_normalizedTRxAndAllMAs, 'figName': self.normalizedTRxAndAllMAsChart},
             "graph_normalizedTRx": {'function': self.graph_normalizedTRx, 'figName': self.normalizedTRxChart},

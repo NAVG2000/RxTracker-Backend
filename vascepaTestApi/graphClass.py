@@ -68,7 +68,7 @@ class graphObj:
 
     def __init__(self, drug, masterDf, weeks, xLabel, yLabels, chartType, yLabel=None, title=None, ax=None, fig=None):
         if(ax is None and fig is None):
-            self.fig, self.ax = plt.subplots(figsize=(9, 5.06))
+            self.fig, self.ax = plt.subplots(figsize=(12, 6))
         else:
             assert (
                 ax is not None and fig is not None), "Pass in eiher BOTH fig and ax or NEITHER fig and ax"
