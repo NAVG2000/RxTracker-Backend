@@ -14,6 +14,8 @@ def holidays_dict_to_df(holidays_list):
         list(holidays_list.items()), columns=['ds', 'holiday'])
     for i in range(len(holidays_df)):
         holidays_df['ds'][i] = holiday_to_friday(holidays_df['ds'][i])
+    holidays_df['upper_window'] = 7
+    holidays_df['lower_window'] = 0
     return holidays_df
 
 
