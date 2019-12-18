@@ -22,8 +22,10 @@ class modelObj:
         self.prophetDf.columns = ["ds", "y"]
 
     def createAndTrainModel(self):
-        holidays = seasonality.generate_holidays(
-            self.masterDf['Week'].iloc[-1].year, self.prophetDf['ds'].iloc[1].year)
+        start_year = self.masterDf['Week'].iloc[-1].year
+        end_year = (self.masterDf['Week'].iloc[1].year) + \
+            (self.periodsToPredict//52)
+        holidays = seasonality.generate_holidays(start_year, end_year)
         self.model = Prophet(
             seasonality_mode='multiplicative', holidays=holidays)
         self.model.fit(self.prophetDf)
