@@ -23,10 +23,12 @@ def chart():
         weeks = request.get_json()['weeks']
         predictBool = request.get_json()['predictBool']
         source = request.get_json()['source']
+
         drugobj = drugObj(drug, weeks, source, predictBool)
         availableGraphs = drugobj.generateAvailableGraphsDict()
         availableGraphs[chartType]['function'](weeks, predictBool)
         availableGraphs = drugobj.generateAvailableGraphsDict()
+
         fig = availableGraphs[chartType]['figName'].fig
         img = BytesIO()
         fig.savefig(img)

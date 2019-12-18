@@ -6,3 +6,5 @@ matplotlib
 seaborn
 fbprophet
 plotly
+holidays
+pystan

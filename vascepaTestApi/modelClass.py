@@ -1,4 +1,6 @@
 from fbprophet import Prophet
+import pandas as pd
+import seasonality
 
 
 class modelObj:
@@ -20,7 +22,10 @@ class modelObj:
         self.prophetDf.columns = ["ds", "y"]
 
     def createAndTrainModel(self):
-        self.model = Prophet(seasonality_mode='multiplicative')
+        holidays = seasonality.generate_holidays(
+            self.masterDf['Week'].iloc[-1].year, self.prophetDf['ds'].iloc[1].year)
+        self.model = Prophet(
+            seasonality_mode='multiplicative', holidays=holidays)
         self.model.fit(self.prophetDf)
 
     def createForecast(self):
