@@ -9,7 +9,7 @@ import datetime
 
 class drugObj:
     #maybe use function dictionary to simplify code based on user input
-    def __init__(self,drug,weeks,source = None, predict = False):
+    def __init__(self,drug,weeks,source = None, predict = False, weeksToTrainOn = None):
         '''
         PARAMETERS:
         drug: name of the drug to be used by this drugObj. Must be string with no spaces. (string)
@@ -23,7 +23,7 @@ class drugObj:
         self.predict = predict
         self.importerObj = importerObj(self.drug,source)
         self.masterDf = self.importerObj.masterDf
-        self.weeksToTrainOn = round(len(self.masterDf) * 0.75)
+        self.weeksToTrainOn = round(len(self.masterDf) * 0.75) if weeksToTrainOn is None else weeksToTrainOn
         self.rx_quantity = self.importerObj.rx_quantity
         self.rawFields = self.importerObj.rawFields
         self.updatedFields = self.importerObj.updatedFields
@@ -230,6 +230,7 @@ class drugObj:
         self.normalizedTRxChart = graphObj(self.drug, self.masterDf, weeks, "Week" ,["Normalized_TRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Normalized_TRx",52).predictionDf
+            self.normalizedTRxPredictionDf = predictionDf
             self.normalizedTRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Normalized_TRx"]])
  
     def graph_normalizedNRx(self, weeks, predict):
@@ -245,6 +246,7 @@ class drugObj:
         self.normalizedNRxChart = graphObj(self.drug,self.masterDf, weeks,"Week",["Normalized_NRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Normalized_NRx",52).predictionDf
+            self.normalizedNRxPredictionDf = predictionDf
             self.normalizedNRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Normalized_NRx"]])
 
     def graph_normalizedRRx(self, weeks, predict):
@@ -260,6 +262,7 @@ class drugObj:
         self.normalizedRRxChart = graphObj(self.drug,self.masterDf, weeks,"Week",["Normalized_RRx"],["scatter"])
         if predict == True: 
             predictionDf = modelObj(self.masterDf,self.weeksToTrainOn,"Normalized_RRx",52).predictionDf
+            self.normalizedRRxPredictionDf = predictionDf
             self.normalizedRRxChart.generateChart(["scatter"],predictionDf["Week"],[predictionDf["Normalized_RRx"]])
 
     def graph_trxWowGrowth(self, weeks, predict):

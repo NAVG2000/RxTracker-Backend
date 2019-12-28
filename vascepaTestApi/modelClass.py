@@ -37,8 +37,9 @@ class modelObj:
         self.fullForecastDf = self.model.predict(self.futureDatesDf)
 
     def createTargetPredictions(self):
-        # can include uncertanties to graph those as well
+        # can include uncertanties to graph those as well by adding that functionality
         self.predictionDf = self.fullForecastDf[["ds", "yhat"]].copy()
         self.predictionDf.columns = ["Week", self.target]
         # reverse the order of the datarame but keep index order
         self.predictionDf = self.predictionDf.iloc[::-1].reset_index(drop=True)
+        self.predictionDf[self.target] = round(self.predictionDf[self.target])

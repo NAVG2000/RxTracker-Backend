@@ -18,6 +18,7 @@ class importerObj:
             "Week",
             "Year",
             "Month",
+            "Day",
             "TRx_Quantity",
             "NRx_Quantity",
             "Normalized_TRx",
@@ -75,7 +76,7 @@ class importerObj:
         """
         if folderPath is None:
             folderPath = os.getcwd()
-        fullFileName = f"{self.drug}_{fileName}.csv"
+        fullFileName = f"drugData/{self.drug}_{fileName}.csv"
         newPath = os.path.join(folderPath, fullFileName)
         df.to_csv(newPath, sep=',', index=None)
 
@@ -89,6 +90,7 @@ class importerObj:
         df["Week"] = df["Week"].dt.date
         df["Year"] = df.apply(lambda row: row.Week.year, axis=1)
         df["Month"] = df.apply(lambda row: row.Week.month, axis=1)
+        df["Day"] = df.apply(lambda row: row.Week.day, axis=1)
         df = self.create_Normalized_Rx(df)
         df = self.create_Wow_Growth(df)
         df = self.enumerate_week(df)
@@ -142,6 +144,9 @@ class importerObj:
         df["RRx_Wow_Growth"] = round(
             (df["Normalized_RRx"] - df["Normalized_RRx"].shift(-1))/df["Normalized_RRx"].shift(-1), 4)
         return df
+
+    # Can refactor by creating a moving average function that takes in number of weeks and a target
+    # (i.e. 'Normalized_TRx' and loops through the last n weeks and returns the moving average value.)
 
     def create_Rx_Moving_Averages(self, df):
         df["Four_Week_MA_TRx"] = round((df["Normalized_TRx"] + df["Normalized_TRx"].shift(-1) +
