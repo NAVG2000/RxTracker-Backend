@@ -3,9 +3,8 @@ pandas
 numpy
 datetime
 matplotlib
-seaborn
-fbprophet
-plotly
-holidays
 pystan
+holidays==0.9
+fbprophet
+gunicorn
 pymongo

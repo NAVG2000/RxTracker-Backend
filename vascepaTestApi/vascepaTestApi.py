@@ -14,6 +14,11 @@ def test():
     resp = Response("working", status=200, mimetype='application/json')
     return resp
 
+@app.route('/testget', methods=['GET'])
+def testget():
+    resp = Response("working", status=200, mimetype='application/json')
+    return resp
+
 
 @app.route('/chart', methods=['POST'])
 def chart():
