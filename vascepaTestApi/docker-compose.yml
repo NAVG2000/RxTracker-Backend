@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+    web:
+        build: ./app
+        image: rxtracker:latest
+        expose: 
+            - "80"
+        ports: # only for developing, eventually this is not accessible to the internet, only internally
+            - "80:80"
+    #nginx:
+        #build: ./nginx
+        #depends_on:
+            #- web 
