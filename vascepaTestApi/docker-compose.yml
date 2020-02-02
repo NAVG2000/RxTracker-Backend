@@ -5,10 +5,11 @@ services:
         build: ./app
         image: rxtracker:latest
         expose: 
-            - "80"
-        ports: # only for developing, eventually this is not accessible to the internet, only internally
+            - "8000"
+            
+    nginx:
+        build: ./nginx
+        ports:
             - "80:80"
-    #nginx:
-        #build: ./nginx
-        #depends_on:
-            #- web 
+        depends_on:
+            - web 
