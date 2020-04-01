@@ -1,15 +1,16 @@
 version: '3.7'
 
 services:
-    web:
+    app:
         build: ./app
-        image: rxtracker:latest
+        image: 980070691560.dkr.ecr.us-east-1.amazonaws.com/rx_tracker_app:latest
         expose: 
             - "8000"
             
     nginx:
         build: ./nginx
+        image: 980070691560.dkr.ecr.us-east-1.amazonaws.com/rx_tracker_nginx:latest
         ports:
             - "80:80"
         depends_on:
-            - web 
+            - app
