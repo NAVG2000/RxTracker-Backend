@@ -1,3 +1,4 @@
+
 version: '3.7'
 
 services:
@@ -5,8 +6,8 @@ services:
         build: ./app
         image: 980070691560.dkr.ecr.us-east-1.amazonaws.com/rx_tracker_app:latest
         expose: 
-            - "8000"
-            
+             - "8000"
+                        
     nginx:
         build: ./nginx
         image: 980070691560.dkr.ecr.us-east-1.amazonaws.com/rx_tracker_nginx:latest
@@ -14,3 +15,4 @@ services:
             - "80:80"
         depends_on:
             - app
+
