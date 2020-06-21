@@ -1,6 +1,7 @@
 from flask import Flask, send_file, Response, request, jsonify
 
 from io import BytesIO
+import base64
 import pandas as pd
 
 from drugClass import drugObj
@@ -13,6 +14,7 @@ app = Flask(__name__)
 def test():
     resp = Response("working", status=200, mimetype='application/json')
     return resp
+
 
 @app.route('/testget', methods=['GET'])
 def testget():
@@ -39,7 +41,8 @@ def chart():
         img = BytesIO()
         fig.savefig(img)
         img.seek(0)
-        return send_file(img, mimetype='image/png')
+        img_b64 = base64.b64encode(img.read())
+        return Response(img_b64, status=200, mimetype='application/json')
     else:
         return "Unsupported mediatype"
 
