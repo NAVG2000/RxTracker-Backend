@@ -1,5 +1,5 @@
-Pipfile
-Pipfile.lock
+app/Pipfile
+app/Pipfile.lock
 __pycache__/
 .vscode/
 .DS_Store
