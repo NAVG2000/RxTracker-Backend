@@ -9,4 +9,3 @@ holidays==0.9.12
 fbprophet
 gunicorn
 pymongo
-unittest
