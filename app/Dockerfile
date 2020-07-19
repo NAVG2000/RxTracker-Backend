@@ -1,4 +1,4 @@
-FROM python:3.6-stretch AS base
+FROM python:3.7-stretch AS base
 
 FROM base AS builder
 RUN mkdir /install
