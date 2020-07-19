@@ -25,7 +25,7 @@ def chart():
         source = request.get_json()['source']
         weeksToTrainOn = request.get_json()['weeksToTrainOn']
 
-        drugobj = drugObj(drug, weeks, source, predictBoPol, weeksToTrainOn)
+        drugobj = drugObj(drug, weeks, source, predictBool, weeksToTrainOn)
         availableGraphs = drugobj.generateAvailableGraphsDict()
         availableGraphs[chartType]['function'](weeks, predictBool)
         availableGraphs = drugobj.generateAvailableGraphsDict()
