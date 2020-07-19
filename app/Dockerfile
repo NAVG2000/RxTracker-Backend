@@ -11,4 +11,5 @@ FROM base
 COPY --from=builder /usr/local /usr/local
 COPY . /app
 WORKDIR /app
+RUN python tests.py -f
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "rxtracker-api:app"]
