@@ -15,12 +15,6 @@ def healthCheck():
     return Response(status=200)
 
 
-@app.route('/testget', methods=['GET'])
-def testget():
-    resp = Response("working", status=200, mimetype='application/json')
-    return resp
-
-
 @app.route('/chart', methods=['POST'])
 def chart():
     if request.headers['Content-Type'] == 'application/json':
@@ -31,7 +25,7 @@ def chart():
         source = request.get_json()['source']
         weeksToTrainOn = request.get_json()['weeksToTrainOn']
 
-        drugobj = drugObj(drug, weeks, source, predictBool, weeksToTrainOn)
+        drugobj = drugObj(drug, weeks, source, predictBoPol, weeksToTrainOn)
         availableGraphs = drugobj.generateAvailableGraphsDict()
         availableGraphs[chartType]['function'](weeks, predictBool)
         availableGraphs = drugobj.generateAvailableGraphsDict()

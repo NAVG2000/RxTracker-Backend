@@ -11,4 +11,4 @@ FROM base
 COPY --from=builder /usr/local /usr/local
 COPY . /app
 WORKDIR /app
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "vascepaTestApi:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "rxtracker-api:app"]

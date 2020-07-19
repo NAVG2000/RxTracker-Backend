@@ -1,6 +1,6 @@
 from fbprophet import Prophet
 import pandas as pd
-import seasonality
+import seasonality as seasonality
 
 
 class modelObj:

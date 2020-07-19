@@ -105,7 +105,8 @@ class importerObj:
         Imports existing updated csv file of weekly data (contains "Normalized_TRx", "Normalized_NRx", "Normalized_RRX")
         """
         fields = self.updatedFields
-        df = pd.read_csv(f"drugData/{self.drug}_Weekly_Updated_Data.csv", parse_dates=['Week'], skipinitialspace=True, usecols=fields)
+        df = pd.read_csv(f"drugData/{self.drug}_Weekly_Updated_Data.csv",
+                         parse_dates=['Week'], skipinitialspace=True, usecols=fields)
         df["Week"] = df["Week"].dt.date
         # drop inf/-inf/nan values
         self.masterDf = df.replace([np.inf, -np.inf], np.nan).dropna()
