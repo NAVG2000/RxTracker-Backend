@@ -10,10 +10,9 @@ import modelClass
 app = Flask(__name__)
 
 
-@app.route('/test', methods=['POST'])
-def test():
-    resp = Response("working", status=200, mimetype='application/json')
-    return resp
+@app.route('/healthCheck')
+def healthCheck():
+    return Response(status=200)
 
 
 @app.route('/testget', methods=['GET'])
