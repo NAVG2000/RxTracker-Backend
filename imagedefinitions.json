@@ -1,0 +1,10 @@
+[
+    {
+        "name": "app",
+        "imageUri": "980070691560.dkr.ecr.us-east-1.amazonaws.com/rx_tracker_app:latest"
+    },
+    {
+        "name": "nginx",
+        "imageUri": "980070691560.dkr.ecr.us-east-1.amazonaws.com/rx_tracker_nginx:latest"
+    }
+]
