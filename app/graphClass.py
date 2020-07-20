@@ -1,6 +1,7 @@
 import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
+import mpld3
 plt.switch_backend('Agg')
 sns.set()
 

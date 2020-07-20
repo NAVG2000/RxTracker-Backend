@@ -4,6 +4,7 @@ numpy
 datetime
 matplotlib
 seaborn
+mpld3
 pystan
 holidays==0.9.12
 fbprophet
