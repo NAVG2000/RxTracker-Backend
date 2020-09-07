@@ -17,23 +17,22 @@ class modelObj:
         self.createTargetPredictions()
 
     def createTrainingData(self):
-        self.prophetDf = self.masterDf[['Week', self.target]].copy()
-        self.prophetDf = self.prophetDf[0:self.weeksToTrainOn]
+        self.prophetDf = self.masterDf[["Week", self.target]].copy()
+        self.prophetDf = self.prophetDf[0 : self.weeksToTrainOn]
         self.prophetDf.columns = ["ds", "y"]
 
     def createAndTrainModel(self):
-        start_year = self.masterDf['Week'].iloc[-1].year
-        end_year = (self.masterDf['Week'].iloc[1].year) + \
-            (self.periodsToPredict//52)
+        start_year = self.masterDf["Week"].iloc[-1].year
+        end_year = (self.masterDf["Week"].iloc[1].year) + (self.periodsToPredict // 52)
         holidays = seasonality.generate_holidays(start_year, end_year)
-        self.model = Prophet(
-            seasonality_mode='multiplicative', holidays=holidays)
+        self.model = Prophet(seasonality_mode="multiplicative", holidays=holidays)
         self.model.fit(self.prophetDf)
 
     def createForecast(self):
         # "custom" freq, not mentioned by prophet documentation. Uses fact that pd.date_range (which Prophet's make_future_dataframe uses) accepts multiples of a frquency alias.
         self.futureDatesDf = self.model.make_future_dataframe(
-            periods=self.periodsToPredict, freq='7D', include_history=False)
+            periods=self.periodsToPredict, freq="7D", include_history=False
+        )
         self.fullForecastDf = self.model.predict(self.futureDatesDf)
 
     def createTargetPredictions(self):
