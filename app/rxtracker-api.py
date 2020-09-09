@@ -26,8 +26,11 @@ def chart():
         predictBool = request.get_json()["predictBool"]
         source = request.get_json()["source"]
         weeksToTrainOn = request.get_json()["weeksToTrainOn"]
+        figW = request.get_json()["figWidth"]
+        figH = request.get_json()["figHeight"]
 
-        drugobj = drugObj(drug, weeks, source, predictBool, weeksToTrainOn)
+        drugobj = drugObj(drug, weeks, source, predictBool,
+                          weeksToTrainOn, figW, figH)
         availableGraphs = drugobj.generateAvailableGraphsDict()
         availableGraphs[chartType]["function"](weeks, predictBool)
         availableGraphs = drugobj.generateAvailableGraphsDict()
@@ -52,7 +55,11 @@ def interactive():
         source = request.get_json()["source"]
         weeksToTrainOn = request.get_json()["weeksToTrainOn"]
 
-        drugobj = drugObj(drug, weeks, source, predictBool, weeksToTrainOn)
+        figW = request.get_json()["figWidth"]
+        figH = request.get_json()["figHeight"]
+
+        drugobj = drugObj(drug, weeks, source, predictBool,
+                          weeksToTrainOn, figW, figH)
         availableGraphs = drugobj.generateAvailableGraphsDict()
         availableGraphs[chartType]["function"](weeks, predictBool)
         availableGraphs = drugobj.generateAvailableGraphsDict()

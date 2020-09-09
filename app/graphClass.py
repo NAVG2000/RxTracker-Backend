@@ -57,7 +57,7 @@ class graphObj:
                 "Given number of weeks is more than the weeks/rows in the data set. Will use all rows in dataset for graph."
             )
             self.setWeeks(self.masterDf["Week"].count() - 1)
-        self.masterDf = self.masterDf.iloc[0 : self.weeks + 1]
+        self.masterDf = self.masterDf.iloc[0: self.weeks + 1]
 
     def setAvailableChartTypes(self):
         self.availableChartTypes = {
@@ -87,9 +87,11 @@ class graphObj:
         title=None,
         ax=None,
         fig=None,
+        figW=10,
+        figH=5.625
     ):
         if ax is None and fig is None:
-            self.fig, self.ax = plt.subplots(figsize=(12, 6))
+            self.fig, self.ax = plt.subplots(figsize=(figW, figH))
         else:
             assert (
                 ax is not None and fig is not None
