@@ -53,13 +53,14 @@ def interactive():
         weeks = request.get_json()["weeks"]
         predictBool = request.get_json()["predictBool"]
         source = request.get_json()["source"]
+        weeksToPredict = request.get_json()["weeksToPredict"]
         weeksToTrainOn = request.get_json()["weeksToTrainOn"]
 
         figW = request.get_json()["figWidth"]
         figH = request.get_json()["figHeight"]
 
         drugobj = drugObj(drug, weeks, source, predictBool,
-                          weeksToTrainOn, figW, figH)
+                          weeksToTrainOn, figW, figH, weeksToPredict)
         availableGraphs = drugobj.generateAvailableGraphsDict()
         availableGraphs[chartType]["function"](weeks, predictBool)
         availableGraphs = drugobj.generateAvailableGraphsDict()

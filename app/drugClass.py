@@ -9,7 +9,7 @@ import datetime
 
 class drugObj:
     # maybe use function dictionary to simplify code based on user input
-    def __init__(self, drug, weeks, source=None, predict=False, weeksToTrainOn=None, figW=10, figH=5.625):
+    def __init__(self, drug, weeks, source=None, predict=False, weeksToTrainOn=None, figW=10, figH=5.625, weeksToPredict=52):
         """
         PARAMETERS:
         drug: name of the drug to be used by this drugObj. Must be string with no spaces. (string)
@@ -30,6 +30,7 @@ class drugObj:
         )
         self.figW = figW
         self.figH = figH
+        self.weeksToPredict = weeksToPredict
         self.rx_quantity = self.importerObj.rx_quantity
         self.rawFields = self.importerObj.rawFields
         self.updatedFields = self.importerObj.updatedFields
@@ -591,7 +592,8 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Normalized_TRx", 52
+                # TODO: expose in api number of weeks to predict
+                self.masterDf, self.weeksToTrainOn, "Normalized_TRx", self.weeksToPredict
             ).predictionDf
             self.normalizedTRxPredictionDf = predictionDf
             self.normalizedTRxChart.generateChart(
@@ -615,7 +617,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Normalized_NRx", 52
+                self.masterDf, self.weeksToTrainOn, "Normalized_NRx", self.weeksToPredict
             ).predictionDf
             self.normalizedNRxPredictionDf = predictionDf
             self.normalizedNRxChart.generateChart(
@@ -639,7 +641,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Normalized_RRx", 52
+                self.masterDf, self.weeksToTrainOn, "Normalized_RRx", self.weeksToPredict
             ).predictionDf
             self.normalizedRRxPredictionDf = predictionDf
             self.normalizedRRxChart.generateChart(
@@ -664,7 +666,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "TRx_Wow_Growth", 52
+                self.masterDf, self.weeksToTrainOn, "TRx_Wow_Growth", self.weeksToPredict
             ).predictionDf
             self.trxWowGrowthChart.generateChart(
                 ["plot"], predictionDf["Week"], [
@@ -688,7 +690,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "NRx_Wow_Growth", 52
+                self.masterDf, self.weeksToTrainOn, "NRx_Wow_Growth", self.weeksToPredict
             ).predictionDf
             self.nrxWowGrowthChart.generateChart(
                 ["plot"], predictionDf["Week"], [
@@ -712,7 +714,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "RRx_Wow_Growth", 52
+                self.masterDf, self.weeksToTrainOn, "RRx_Wow_Growth", self.weeksToPredict
             ).predictionDf
             self.rrxWowGrowthChart.generateChart(
                 ["plot"], predictionDf["Week"], [
@@ -744,7 +746,7 @@ class drugObj:
         # might have wierd predict behavior
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Normalized_TRx", 52
+                self.masterDf, self.weeksToTrainOn, "Normalized_TRx", self.weeksToPredict
             ).predictionDf
             self.normalizedTRxLogChart.generateChart(
                 ["logy_plot"], predictionDf["Week"], [
@@ -764,7 +766,7 @@ class drugObj:
         # might have wierd predict behavior
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Normalized_NRx", 52
+                self.masterDf, self.weeksToTrainOn, "Normalized_NRx", self.weeksToPredict
             ).predictionDf
             self.normalizedNRxLogChart.generateChart(
                 ["logy_plot"], predictionDf["Week"], [
@@ -784,7 +786,7 @@ class drugObj:
         # might have wierd predict behavior
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Normalized_RRx", 52
+                self.masterDf, self.weeksToTrainOn, "Normalized_RRx", self.weeksToPredict
             ).predictionDf
             self.normalizedRRxLogChart.generateChart(
                 ["logy_plot"], predictionDf["Week"], [
@@ -798,7 +800,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_TRx", 52
+                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_TRx", self.weeksToPredict
             ).predictionDf
             self.fourWeekMATRxChart.generateChart(
                 ["scatter"], predictionDf["Week"], [
@@ -812,7 +814,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_NRx", 52
+                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_NRx", self.weeksToPredict
             ).predictionDf
             self.fourWeekMANRxChart.generateChart(
                 ["scatter"], predictionDf["Week"], [
@@ -826,7 +828,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_RRx", 52
+                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_RRx", self.weeksToPredict
             ).predictionDf
             self.fourWeekMARRxChart.generateChart(
                 ["scatter"], predictionDf["Week"], [
@@ -840,7 +842,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_TRx", 52
+                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_TRx", self.weeksToPredict
             ).predictionDf
             self.eightWeekMATRxChart.generateChart(
                 ["scatter"], predictionDf["Week"], [
@@ -854,7 +856,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_NRx", 52
+                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_NRx", self.weeksToPredict
             ).predictionDf
             self.eightWeekMANRxChart.generateChart(
                 ["scatter"], predictionDf["Week"], [
@@ -868,7 +870,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_RRx", 52
+                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_RRx", self.weeksToPredict
             ).predictionDf
             self.eightWeekMARRxChart.generateChart(
                 ["scatter"], predictionDf["Week"], [
@@ -886,7 +888,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Thirteen_Week_MA_TRx", 52
+                self.masterDf, self.weeksToTrainOn, "Thirteen_Week_MA_TRx", self.weeksToPredict
             ).predictionDf
             self.thirteenWeekMATRxChart.generateChart(
                 ["scatter"],
@@ -905,7 +907,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Thirteen_Week_MA_NRx", 52
+                self.masterDf, self.weeksToTrainOn, "Thirteen_Week_MA_NRx", self.weeksToPredict
             ).predictionDf
             self.thirteenWeekMANRxChart.generateChart(
                 ["scatter"],
@@ -924,7 +926,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Thirteen_Week_MA_RRx", 52
+                self.masterDf, self.weeksToTrainOn, "Thirteen_Week_MA_RRx", self.weeksToPredict
             ).predictionDf
             self.thirteenWeekMARRxChart.generateChart(
                 ["scatter"],
@@ -961,7 +963,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_TRx_WoW_Growth", 52
+                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_TRx_WoW_Growth", self.weeksToPredict
             ).predictionDf
             self.fourWeekMATRxWoWGrowthChart.generateChart(
                 ["plot"],
@@ -980,7 +982,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_NRx_WoW_Growth", 52
+                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_NRx_WoW_Growth", self.weeksToPredict
             ).predictionDf
             self.fourWeekMANRxWoWGrowthChart.generateChart(
                 ["plot"],
@@ -999,7 +1001,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_RRx_WoW_Growth", 52
+                self.masterDf, self.weeksToTrainOn, "Four_Week_MA_RRx_WoW_Growth", self.weeksToPredict
             ).predictionDf
             self.fourWeekMARRxWoWGrowthChart.generateChart(
                 ["plot"],
@@ -1018,7 +1020,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_TRx_WoW_Growth", 52
+                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_TRx_WoW_Growth", self.weeksToPredict
             ).predictionDf
             self.eightWeekMATRxWoWGrowthChart.generateChart(
                 ["plot"],
@@ -1037,7 +1039,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_NRx_WoW_Growth", 52
+                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_NRx_WoW_Growth", self.weeksToPredict
             ).predictionDf
             self.eightWeekMANRxWoWGrowthChart.generateChart(
                 ["plot"],
@@ -1056,7 +1058,7 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_RRx_WoW_Growth", 52
+                self.masterDf, self.weeksToTrainOn, "Eight_Week_MA_RRx_WoW_Growth", self.weeksToPredict
             ).predictionDf
             self.eightWeekMARRxWoWGrowthChart.generateChart(
                 ["plot"],
@@ -1078,7 +1080,7 @@ class drugObj:
                 self.masterDf,
                 self.weeksToTrainOn,
                 "Thirteen_Week_MA_TRx_WoW_Growth",
-                52,
+                self.weeksToPredict,
             ).predictionDf
             self.thirteenWeekMATRxWoWGrowthChart.generateChart(
                 ["plot"],
@@ -1100,7 +1102,7 @@ class drugObj:
                 self.masterDf,
                 self.weeksToTrainOn,
                 "Thirteen_Week_MA_NRx_WoW_Growth",
-                52,
+                self.weeksToPredict,
             ).predictionDf
             self.thirteenWeekMANRxWoWGrowthChart.generateChart(
                 ["plot"],
@@ -1122,7 +1124,7 @@ class drugObj:
                 self.masterDf,
                 self.weeksToTrainOn,
                 "Thirteen_Week_MA_RRx_WoW_Growth",
-                52,
+                self.weeksToPredict,
             ).predictionDf
             self.thirteenWeekMARRxWoWGrowthChart.generateChart(
                 ["plot"],
