@@ -9,4 +9,4 @@ pystan
 holidays
 fbprophet
 gunicorn
-pymongo
+boto3

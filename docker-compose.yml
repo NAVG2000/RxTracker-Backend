@@ -2,7 +2,11 @@ version: "3.7"
 
 services:
     app:
-        build: ./app
+        build:
+            context: ./app
+            args:
+                - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+                - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
         image: 980070691560.dkr.ecr.us-east-1.amazonaws.com/rx_tracker_app:latest
         expose:
             - "8000"
