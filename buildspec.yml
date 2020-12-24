@@ -8,6 +8,8 @@ phases:
     commands:
       - echo Loging into ECR ...
       - $(aws ecr get-login --no-include-email --region us-east-1)
+      - echo Loging into Docker Hub
+      - echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
   build:
     commands:
       - echo Building ...
