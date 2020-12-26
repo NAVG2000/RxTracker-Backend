@@ -1,6 +1,7 @@
 from importerClass import importerObj
 from graphClass import graphObj
 from modelClass import modelObj
+import dbUtils
 
 import pandas as pd
 import numpy as np
@@ -65,7 +66,7 @@ class drugObj:
         self.eightWeekMARRxWoWGrowthChart = None
         self.thirteenWeekMARRxWoWGrowthChart = None
         self.normalizedAllRxChart = None
-
+        dbUtils.addDrug(self.drug, self.masterDf)
         # generation of charts (eventaully make functions that generates predecided charts (such as a 'createReport' function))
         # self.generateAllCharts(self.predict)
 
@@ -592,7 +593,6 @@ class drugObj:
         )
         if predict == True:
             predictionDf = modelObj(
-                # TODO: expose in api number of weeks to predict
                 self.masterDf, self.weeksToTrainOn, "Normalized_TRx", self.weeksToPredict
             ).predictionDf
             self.normalizedTRxPredictionDf = predictionDf
@@ -790,7 +790,7 @@ class drugObj:
             ).predictionDf
             self.normalizedRRxLogChart.generateChart(
                 ["logy_plot"], predictionDf["Week"], [
-                    predictionDf["Normalized_RRx"]]
+                    predictionDf["Normalized_RRx"]]  # TODO: add '_prediction' to target(in this case 'Normalized_RRx')
             )
 
     def graph_fourWeekMATRx(self, weeks, predict):
