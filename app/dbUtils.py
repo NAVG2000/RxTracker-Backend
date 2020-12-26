@@ -21,7 +21,7 @@ def addDrug(name, df):
     print("before put in db", final_dict)
     try:
         print("start dynamo put")
-        table.put_item({'name': "Nico", 'data': "hey"})
+        table.put_item(Item={'name': "Nico", 'data': "hey"})
         table.put_item(Item=final_dict,
                        ConditionExpression='attribute_not_exists(name)')
     except Exception as e:
