@@ -10,7 +10,7 @@ def addDrug(name, df):
         name (string): drug name as it appears in the dynamodb table 'RxTracker-DrugsTable'
         df (dataframe): dataframe that contains all the drug data.
     """
-    table = boto3.client('dynamodb').Table('RxTracker-DrugsTable')
+    table = boto3.resource('dynamodb').Table('RxTracker-DrugsTable')
     df["Week"] = df.apply(lambda row: row.strftime('%-y/%-m/%-d'), axis=1)
     df_as_dict = df.to_dict('records')
     final_dict = {'name': name, 'data': df_as_dict}
