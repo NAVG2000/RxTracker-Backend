@@ -11,10 +11,11 @@ def addDrug(name, df):
         df (dataframe): dataframe that contains all the drug data.
     """
     table = boto3.resource('dynamodb').Table('RxTracker-DrugsTable')
+    df = df.copy(deep=True)
     df["Week"] = df.apply(lambda row: row.Week.strftime('%-y/%-m/%-d'), axis=1)
     df_as_dict = df.to_dict('records')
     final_dict = {'name': name, 'data': df_as_dict}
-    print(final_dict)
+    print("before put in db", final_dict)
     try:
         print("start dynamo put")
         table.put_item(Item=final_dict,
