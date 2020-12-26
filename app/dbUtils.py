@@ -13,7 +13,10 @@ def addDrug(name, df):
     df_as_dict = df.to_dict('records')
     final_dict = {'name': name, 'data': df_as_dict}
     try:
+        print("start dynamo put")
         client.put_item(
             TableName='RxTracker-DrugsTable', Item=final_dict, ConditionExpression='attribute_not_exists(name)')
-    except:
+    except Exception as e:
+        print("dynamo put failed")
+        print(e)
         pass
