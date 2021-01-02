@@ -38,7 +38,7 @@ def getDrug(name):
     table = boto3.resource('dynamodb').Table('RxTracker-DrugsTable')
     try:
         response = table.get_item(Key={'name': name})
-        data_dict = response.Item.data
+        data_dict = response['Item']['data']
         df = pd.DataFrame.from_dict(data_dict)
         return df
     except Exception as e:
