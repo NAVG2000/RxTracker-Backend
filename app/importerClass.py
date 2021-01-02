@@ -121,7 +121,8 @@ class importerObj:
         df['Week'] = pd.to_datetime(df['Week']).dt.date
         df = df.replace([np.inf, -np.inf], np.nan).dropna()
         print("processed from dynamo", df)
-        self.masterDf = df
+        #self.masterDf = df
+        print('a row', df.iloc[[2]])
 
     # Helper functions for import_from_raw_weekly_data().
     # Create most data/calculations from raw data
