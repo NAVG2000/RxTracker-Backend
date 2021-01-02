@@ -115,7 +115,9 @@ class importerObj:
         df["Week"] = df["Week"].dt.date
         # drop inf/-inf/nan values
         self.masterDf = df.replace([np.inf, -np.inf], np.nan).dropna()
-        dbUtils.getDrug(self.drug)
+        df = dbUtils.getDrug(self.drug)
+        print("from dynamo\n", df)
+        print("\nfrom csv\n", self.masterDf)
 
     # Helper functions for import_from_raw_weekly_data().
     # Create most data/calculations from raw data
