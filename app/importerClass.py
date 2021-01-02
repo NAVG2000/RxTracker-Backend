@@ -128,9 +128,9 @@ class importerObj:
         for item in self.masterDf.iloc[[2]]:
             print('csv', item, type(item))
 
-        for item in df.iloc[[10]]:
+        for item in df.iloc[10]:
             print("dynamo", item, type(item))
-        for item in self.masterDf.iloc[[10]]:
+        for item in self.masterDf.iloc[10]:
             print('csv', item, type(item))
 
     # Helper functions for import_from_raw_weekly_data().
