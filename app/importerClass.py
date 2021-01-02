@@ -123,6 +123,10 @@ class importerObj:
         print("processed from dynamo", df)
         #self.masterDf = df
         print('a row', df.iloc[[2]])
+        for item in df.iloc[[2]]:
+            print("dynamo", item, type(item))
+        for item in self.masterDf.iloc[[2]]:
+            print('csv', item, type(item))
 
     # Helper functions for import_from_raw_weekly_data().
     # Create most data/calculations from raw data
