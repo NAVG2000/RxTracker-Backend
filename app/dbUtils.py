@@ -27,4 +27,18 @@ def addDrug(name, df):
     except Exception as e:
         print("dynamo put failed")
         print(e)
-        pass
+
+
+def getDrug(name):
+    """[summary]
+
+    Args:
+        name (string): get the drug from dynamoDB
+    """
+    table = boto3.resource('dynamodb').Table('RxTracker-DrugsTable')
+    try:
+        response = table.get_item(Key={'name': name})
+        print(response)
+    except Exception as e:
+        print("dynamo get failed")
+        print(e)

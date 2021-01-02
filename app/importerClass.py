@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import dbUtils
 import os
 
 
@@ -63,7 +64,7 @@ class importerObj:
 
     def save_to_csv(self, df, fileName, folderPath=None):
         """
-        Saves the given Dataframe to the csv file called "Vascepa_Updated_Weekly_Data.csv"
+        Saves the given Dataframe to the csv file called "<drug name>_<file name>.csv"
 
         PARAMETERS:
         df: the Dataframe to save to a csv file.
@@ -114,6 +115,7 @@ class importerObj:
         df["Week"] = df["Week"].dt.date
         # drop inf/-inf/nan values
         self.masterDf = df.replace([np.inf, -np.inf], np.nan).dropna()
+        dbUtils.getDrug(self.drug)
 
     # Helper functions for import_from_raw_weekly_data().
     # Create most data/calculations from raw data
